@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { PenLine, Loader2, RefreshCw, CheckCircle2 } from "lucide-react"
+import { PenLine, Loader2, RefreshCw, CheckCircle2 } from "lucide-react";
 
 interface WriterPanelProps {
-  article: string
-  phase: "writing" | "reviewing" | "revising" | "approved"
-  isApproved: boolean
+  article: string;
+  phase: "writing" | "reviewing" | "revising" | "approved";
+  isApproved: boolean;
 }
 
 export function WriterPanel({ article, phase, isApproved }: WriterPanelProps) {
   const getStatusInfo = () => {
     switch (phase) {
       case "writing":
-        return { icon: Loader2, text: "Writing...", animate: true }
+        return { icon: Loader2, text: "Writing...", animate: true };
       case "reviewing":
-        return { icon: PenLine, text: "Awaiting review", animate: false }
+        return { icon: PenLine, text: "Awaiting review", animate: false };
       case "revising":
-        return { icon: RefreshCw, text: "Revising...", animate: true }
+        return { icon: RefreshCw, text: "Revising...", animate: true };
       case "approved":
-        return { icon: CheckCircle2, text: "Complete", animate: false }
+        return { icon: CheckCircle2, text: "Complete", animate: false };
       default:
-        return { icon: PenLine, text: "Ready", animate: false }
+        return { icon: PenLine, text: "Ready", animate: false };
     }
-  }
+  };
 
-  const status = getStatusInfo()
-  const StatusIcon = status.icon
+  const status = getStatusInfo();
+  const StatusIcon = status.icon;
 
   return (
     <div
@@ -44,9 +44,13 @@ export function WriterPanel({ article, phase, isApproved }: WriterPanelProps) {
             ${isApproved ? "bg-success/20" : "bg-writer-accent/20"}
           `}
           >
-            <PenLine className={`w-4 h-4 ${isApproved ? "text-success" : "text-writer-accent"}`} />
+            <PenLine
+              className={`w-4 h-4 ${isApproved ? "text-success" : "text-writer-accent"}`}
+            />
           </div>
-          <span className="font-semibold text-writer-foreground">AI Writer</span>
+          <span className="font-semibold text-writer-foreground">
+            AI Writer
+          </span>
         </div>
 
         <div
@@ -55,7 +59,9 @@ export function WriterPanel({ article, phase, isApproved }: WriterPanelProps) {
           ${isApproved ? "bg-success/20 text-success" : "bg-writer-accent/20 text-writer-accent"}
         `}
         >
-          <StatusIcon className={`w-3.5 h-3.5 ${status.animate ? "animate-spin" : ""}`} />
+          <StatusIcon
+            className={`w-3.5 h-3.5 ${status.animate ? "animate-spin" : ""}`}
+          />
           <span>{status.text}</span>
         </div>
       </div>
@@ -87,5 +93,5 @@ export function WriterPanel({ article, phase, isApproved }: WriterPanelProps) {
       {/* Subtle gradient overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-writer to-transparent pointer-events-none" />
     </div>
-  )
+  );
 }

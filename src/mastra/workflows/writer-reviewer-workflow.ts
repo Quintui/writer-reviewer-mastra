@@ -1,4 +1,4 @@
-import { ReviewerEventData, WriterEventData } from "@/src/types/workflow";
+import { WriterEventData, ReviewerEventData } from "@/types/workflow";
 import { createStep, createWorkflow } from "@mastra/core";
 import z from "zod";
 

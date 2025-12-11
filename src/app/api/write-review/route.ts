@@ -1,4 +1,4 @@
-import { mastra } from "@/src/mastra";
+import { mastra } from "@/mastra";
 import { toAISdkFormat } from "@mastra/ai-sdk";
 import { createUIMessageStreamResponse } from "ai";
 

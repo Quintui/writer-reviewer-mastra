@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Feather, Sparkles, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { Feather, Sparkles, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
 
 const EXAMPLE_TOPICS = [
   "The future of sustainable architecture",
   "How ancient philosophy shapes modern AI ethics",
   "The hidden psychology of color in branding",
-]
+];
 
 interface LandingScreenProps {
-  onStart: (topic: string) => void
+  onStart: (topic: string) => void;
 }
 
 export function LandingScreen({ onStart }: LandingScreenProps) {
-  const [topic, setTopic] = useState("")
-  const [isFocused, setIsFocused] = useState(false)
+  const [topic, setTopic] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (topic.trim()) {
-      onStart(topic.trim())
+      onStart(topic.trim());
     }
-  }
+  };
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
@@ -41,12 +41,19 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-primary/10 border border-primary/20">
             <Feather className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-4 text-balance">Inkwell</h1>
-          <p className="text-xl text-muted-foreground font-mono text-balance">Where ideas become polished prose</p>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-4 text-balance">
+            Inkwell
+          </h1>
+          <p className="text-xl text-muted-foreground font-mono text-balance">
+            Where ideas become polished prose
+          </p>
         </div>
 
         {/* Main input form */}
-        <form onSubmit={handleSubmit} className="animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150">
+        <form
+          onSubmit={handleSubmit}
+          className="animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150"
+        >
           <div
             className={`
               relative p-1 rounded-xl transition-all duration-300
@@ -90,7 +97,9 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
 
         {/* Example topics */}
         <div className="mt-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-          <p className="text-sm text-muted-foreground mb-4 font-mono">Need inspiration? Try one of these:</p>
+          <p className="text-sm text-muted-foreground mb-4 font-mono">
+            Need inspiration? Try one of these:
+          </p>
           <div className="flex flex-wrap justify-center gap-2">
             {EXAMPLE_TOPICS.map((example, i) => (
               <button
@@ -108,5 +117,5 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
       {/* Bottom accent line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     </div>
-  )
+  );
 }
