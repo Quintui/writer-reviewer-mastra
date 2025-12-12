@@ -10,6 +10,8 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const { send, workflow, status } = useWriterReviewerWorkflow();
 
+  console.log("workflow", workflow);
+
   const handleStartWriting = (inputTopic: string) => {
     setTopic(inputTopic);
     setIsProcessing(true);

@@ -51,7 +51,7 @@ const writerStep = createStep({
 
     for await (const chunk of response.textStream) {
       articleContent += chunk;
-      writer.write({
+      writer.custom({
         id: `writer-article-${currentIterationCount}`,
         type: "data-writer-article",
         data: {
@@ -62,7 +62,7 @@ const writerStep = createStep({
       });
     }
 
-    writer.write({
+    writer.custom({
       id: `writer-article-${currentIterationCount}`,
       type: "data-writer-article",
       data: {
@@ -124,7 +124,7 @@ const reviewerStep = createStep({
     );
 
     for await (const chunk of response.objectStream) {
-      writer.write({
+      writer.custom({
         id: `reviewer-feedback-${inputData.iterationCount}`,
         type: "data-reviewer-feedback",
         data: {
@@ -138,7 +138,7 @@ const reviewerStep = createStep({
 
     const finalObject = await response.object;
 
-    writer.write({
+    writer.custom({
       id: `reviewer-feedback-${inputData.iterationCount}`,
       type: "data-reviewer-feedback",
       data: {

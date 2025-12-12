@@ -1,6 +1,10 @@
 import { mastra } from "@/mastra";
 import { toAISdkFormat } from "@mastra/ai-sdk";
-import { createUIMessageStreamResponse } from "ai";
+import {
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  UIMessageChunk,
+} from "ai";
 
 export const POST = async (request: Request) => {
   const { topic } = await request.json();
