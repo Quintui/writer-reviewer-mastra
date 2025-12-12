@@ -18,19 +18,9 @@ export const POST = async (request: Request) => {
     },
   });
 
-  const modifiedStream = createUIMessageStream({
-    execute: async ({ writer }) => {
-      for await (const chunk of toAISdkFormat(
-        stream.fullStream.pipeThrough(transformer),
-        {},
-      )) {
-        console.log("aiv5", chunk.type);
-        writer.write(chunk as UIMessageChunk);
-      }
-    },
-  });
-
   return createUIMessageStreamResponse({
-    stream: modifiedStream,
+    stream: toAISdkFormat(stream, {
+      from: "workflow",
+    }),
   });
 };
